@@ -1,0 +1,469 @@
+$font: Trebuchet, Arial, Helvetica, sans-serif;
+$blue: #60c1d4;
+$blue-5: lighten($blue, 5%);
+$blue-10: lighten($blue, 10%);
+$teal: #adefe7;
+$mint: #d2f5ea;
+$lt-pink: #fadee6;
+$pink: #ffb8dd;
+
+$dark: #151515;
+$dark-5: lighten($dark, 5%);
+$dark-10: lighten($dark, 10%);
+
+$light: #e3e7ee;
+$light-5: lighten($light, 5%);
+$light-10: lighten($light, 10%);
+
+$transparent:rgba(0,0,0,0.5);
+
+$grid-square-size: 3rem;
+$grid-gap: 1rem;
+
+$nav-height: 4rem;
+$nav-toggle-size: 2rem;
+$nav-width: 4rem;
+
+$panel-border-radius: 0.4rem;
+
+//TODO Resolve theme swapping, will not work reassigning vars, need ot import separete theme definitions
+div.light {
+    $dark: #e3e7ee;
+    $dark-5: lighten($dark, 5%);
+    $dark-10: lighten($dark, 10%);
+
+    $light: #151515;
+    $light-5: lighten($light, 5%);
+    $light-10: lighten($light, 10%);
+}
+
+//@import './output.scss';
+@import './sliders.scss';
+
+.test-button {
+    background-color: $pink;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+html,body {
+    top: 0;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: $dark;
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+
+    font-family: $font;
+}
+
+.root {
+    width: 100vw;
+    height: 100vh;
+}
+
+.first {
+    font-size: 50px;
+    text-align: center;
+    //background-color: $dark;
+    color: $pink;
+}
+
+@mixin tiny {
+    @media (min-width: 500px) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin medium {
+    @media (min-width: 980px) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: 1600px) {
+        @content;
+    }
+}
+
+@mixin flex-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+@mixin horizontal-center {
+    @include flex-vertical;
+    justify-content: center;
+}
+
+@mixin vertical-center {
+    @include flex-horizontal;
+    justify-content: center;
+}
+
+main{
+    padding-left: $nav-width;
+}
+
+.panel {
+    border-radius: $panel-border-radius;
+    background-color: $dark-5;
+    opacity: 96%;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+}
+
+.panel-row {
+    @include flex-horizontal;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+//////////////////////////////////////////////////////////
+// Navigation
+//////////////////////////////////////////////////////////
+
+.nav-container {
+    background-color: $dark-10;
+    width: $nav-width;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+
+    @include flex-vertical;
+    justify-content: flex-start;
+
+    box-shadow: 2px 0px 16px 9px rgba(0,0,0,0.17);
+    z-index: 10;
+}
+
+.icon-container {
+    width: 100%;
+    @include horizontal-center;
+    cursor: pointer;
+    &:hover {
+        background-color: $dark-5;
+    }
+
+    &:hover {
+        .nav-icon {
+            color: $teal;
+        }
+    }
+    .nav-icon {
+        font-size: 3rem;
+        margin: 16px auto;
+        color: $mint;
+
+    }
+}
+
+.icon-container.theme {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/////////////////////////////////////////////////////
+// Header
+////////////////////////////////////////////////////
+.nav-toggle {
+    cursor: pointer;
+    width: $nav-toggle-size;
+    height: $nav-toggle-size;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    background-color: $blue;
+
+    position: relative;
+    left: -$nav-toggle-size;
+
+    @include medium {
+        display: none;
+    }
+}
+
+.navbar {
+    position: fixed;
+    width: 50vw;
+    min-height: 100vh;
+    right: 0;
+    z-index: 200;
+    background-color: $dark-10;
+    opacity: 96%;
+
+    &.active {
+        right: -50vw;
+    }
+
+    @include medium {
+        position: fixed;
+        width: 100vw;
+        min-height: unset;
+        height: $nav-height;
+        box-shadow: 0 0 20px 7px rgba(0,0,0,0.43);
+        &.active {
+            right: 0;
+        }
+    }
+
+    .nav-contents {
+        @include flex-vertical;
+        text-align: center;
+        font-size: 1.8rem;
+        color: $mint;
+
+        @include medium {
+            @include flex-horizontal;
+            text-align: unset;
+            justify-content: flex-start;
+            vertical-align: middle;
+        }
+    }
+}
+
+/////////////////////////////////////////////////////
+// Progress Grid
+////////////////////////////////////////////////////
+.grid-wrapper {
+    width: 80vw;
+    @include flex-vertical;
+    gap: .6rem;
+    padding: 2rem;
+
+    h4 {
+        color: $mint;
+        margin-top: 0;
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    @include medium {
+        gap: 1rem;
+        width: 40%;
+    }
+}
+
+.week-wrapper {
+    @include flex-horizontal;
+    justify-content: flex-start;
+    gap: .6rem;
+    position: relative;
+    z-index: 1;
+    height: calc($grid-square-size / 1.8);
+    p{
+        color: $mint;
+        min-width: 5rem;
+    }
+
+    @include medium {
+        height: $grid-square-size;
+        gap: 1rem;
+        //justify-content: center;
+    }
+}
+
+.run-square {
+    width: calc($grid-square-size / 1.8);
+    height: calc($grid-square-size / 1.8);
+    background-color: $pink;
+    position: relative;
+    box-shadow: 0 0 3px 2px $pink;
+
+    &.complete {
+        background-color: $teal;
+        box-shadow: 0 0 3px 2px $teal;
+    }
+
+    @include medium {
+        height: $grid-square-size;
+        width: $grid-square-size;
+
+    }
+
+
+}
+
+/////////////////////////////////////////////////////
+// Week
+////////////////////////////////////////////////////
+.week-container {
+    width: 80vw;
+    padding: 2rem;
+
+    h2 {
+        color: $mint;
+        text-align: center;
+        font-size: 3rem;
+        margin-top: 0;
+    }
+
+    .run-row{
+        @include flex-horizontal;
+        justify-content: center;
+        gap: 1rem;
+        margin: .5rem 0;
+
+        p{
+            color: $mint;
+            margin: 0;
+            font-size: 2rem
+        }
+    }
+
+    .weeks {
+        @include medium {
+            @include flex-horizontal;
+            justify-content: space-evenly;
+            margin-bottom: 3rem;
+        }
+    }
+}
+
+.pagination-wrapper {
+    @include flex-horizontal;
+    justify-content: center;
+    flex-wrap: wrap;
+
+
+    .pagination-button {
+        cursor: pointer;
+        padding: .2rem .4rem;
+        background-color: $pink;
+        border: 1px solid $dark-10;
+        font-size: 1rem;
+         &.current {
+             background-color: $teal;
+         }
+
+        &.disabled {
+            background-color: $dark-10 !important;
+            color: $mint;
+            cursor: unset;
+        }
+
+        &.start {
+            border-bottom-left-radius: $panel-border-radius;
+            border-top-left-radius: $panel-border-radius;
+            background-color: $pink;
+        }
+
+        &.end {
+            border-bottom-right-radius: $panel-border-radius;
+            border-top-right-radius: $panel-border-radius;
+            background-color: $pink;
+        }
+
+        @include medium {
+            font-size: 1.4rem;
+            padding: .4rem 1rem;
+        }
+    }
+}
+
+/////////////////////////////////////////////////////
+// Progress bar
+////////////////////////////////////////////////////
+.progress-wrapper {
+    width: 80vw;
+    height: fit-content;
+    align-content: center;
+    padding: 2rem;
+
+    @include medium {
+        width: 40%;
+    }
+
+    .circular-progress-container {
+        @include flex-vertical;
+        justify-content: flex-start;
+        gap: 1.2rem;
+        width: 45%;
+        margin: 0 auto;
+        h2 {
+            color: $mint;
+            text-align: center;
+        }
+    }
+
+    .duration-toggle {
+        @include flex-horizontal;
+        justify-content: center;
+        gap: 1.6rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: $mint;
+
+        p {
+            margin: 0;
+            padding: 0.5rem 0;
+        }
+    }
+}
+
+/////////////////////////////////////////////////////
+// Login
+////////////////////////////////////////////////////
+.login-wrapper {
+    width: 80vw;
+
+    .login-group {
+
+        .center-inputs {
+            @include flex-vertical;
+                input {
+                    width: 90%;
+                    border: none;
+                    border-radius: $panel-border-radius;
+                    background-color: $dark-10;
+                    color: $mint;
+                    font-size: 1.4rem;
+                    margin: 1rem auto;
+                    padding: 1rem;
+                }
+        }
+        input.login-submit {
+            border: none;
+            background-color: $teal;
+            padding: 1rem 2rem;
+            font-size: 1.4rem;
+            color: $dark-10;
+            border-radius: $panel-border-radius;
+            margin: 1rem auto;
+            font-weight: 700;
+        }
+    }
+
+    .login-error {
+        color: $pink;
+        font-size: 2rem;
+    }
+
+    #test {
+        margin-top: 3rem;
+    }
+}
+
+//@import './output.scss';

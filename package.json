@@ -1,0 +1,52 @@
+{
+  "name": "henry-half-marathon",
+  "version": "1.0.0",
+  "description": "Starter for Express React Parcel Sass build",
+  "engines": {
+    "node": "17.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "build": "NODE_ENV=production parcel build src/index.html",
+    "watch": "NODE_ENV=development parcel watch src/index.html"
+  },
+  "author": "Henry Frank",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-react": "^7.12.13",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "@parcel/babel-preset-env": "^2.0.1",
+    "@reduxjs/toolkit": "^1.7.1",
+    "@types/react": "^17.0.38",
+    "autoprefixer": "^10.4.1",
+    "babel-loader": "^8.2.2",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "jsx-runtime": "^1.2.0",
+    "mongodb": "^4.2.2",
+    "morgan": "^1.10.0",
+    "parcel-bundler": "^1.12.5",
+    "postcss": "^8.4.5",
+    "postcss-nested": "^5.0.6",
+    "react": "^17.0.2",
+    "react-circular-progressbar": "^2.0.4",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.6",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.2.0",
+    "react-tooltip": "^4.2.21",
+    "sass": "^1.32.8",
+    "semver": "^7.3.5",
+    "tailwindcss": "^3.0.8"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-transform-runtime": "^7.13.10",
+    "@parcel/transformer-sass": "^2.0.1"
+  }
+}

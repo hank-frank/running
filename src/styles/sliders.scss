@@ -1,0 +1,150 @@
+$circle-size: 26px; //13
+$toggle-gap: 4px; //2
+$toggle-fixed-radius: 68px; //34
+$toggle-switch-width: 60px; //30
+$toggle-switch-height: 34px; //17
+$toggle-bottom-margin: 1vh; //1vh
+$toggle-pin-color: $dark;
+$toggle-unchecked-background: $pink;
+$toggle-checked-background: $teal;
+
+$toggle-transition: 0.2;
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: $toggle-switch-width;
+  height: $toggle-switch-height;
+  margin-bottom: $toggle-bottom-margin;
+}
+
+.color-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: $toggle-switch-width;
+  height: $toggle-switch-height;
+  margin-bottom: $toggle-bottom-margin;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $toggle-unchecked-background;
+  -webkit-transition: $toggle-transition;
+  transition: $toggle-transition;
+}
+
+.color-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $toggle-pin-color;
+  -webkit-transition: $toggle-transition;
+  transition: $toggle-transition;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: $circle-size;
+  width: $circle-size;
+  left: $toggle-gap;
+  bottom: $toggle-gap;
+  background-color: $toggle-pin-color;
+  -webkit-transition: $toggle-transition;
+  transition: $toggle-transition;
+}
+
+.color-slider:before {
+  position: absolute;
+  content: "";
+  height: $circle-size;
+  width: $circle-size;
+  left: $toggle-gap;
+  bottom: $toggle-gap;
+  background-color: $toggle-pin-color;
+  -webkit-transition: $toggle-transition;
+  transition: $toggle-transition;
+}
+
+input:checked + .slider {
+  background-color: $toggle-checked-background;
+}
+
+input:checked + .color-slider {
+  background-color: $toggle-checked-background;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $toggle-unchecked-background;
+}
+
+input:focus + .color-slider {
+  box-shadow: 0 0 1px $toggle-unchecked-background;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX($circle-size);
+  -ms-transform: translateX($circle-size);
+  transform: translateX($circle-size);
+}
+
+input:checked + .color-slider:before {
+  -webkit-transform: translateX($circle-size);
+  -ms-transform: translateX($circle-size);
+  transform: translateX($circle-size);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: $toggle-fixed-radius;
+}
+
+.color-slider.color-round {
+  border-radius: $toggle-fixed-radius;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.color-slider.color-round:before {
+  border-radius: 50%;
+}
+
+.duration-toggle {
+  $toggle-unchecked-background: $teal;
+  $toggle-checked-background: $blue;
+  input:checked + .slider {
+    background-color: $toggle-checked-background;
+  }
+
+  input:checked + .color-slider {
+    background-color: $toggle-checked-background;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px $toggle-unchecked-background;
+  }
+
+  input:focus + .color-slider {
+    box-shadow: 0 0 1px $toggle-unchecked-background;
+  }
+
+  .slider {
+    background-color: $toggle-unchecked-background;
+  }
+}
