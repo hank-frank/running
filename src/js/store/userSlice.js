@@ -92,7 +92,7 @@ const updateRun = (runToUpdate, currentState) => {
         console.log('run: ', run, run.id, runToUpdate.id);
         if (run.id === runToUpdate.id) {
             console.log(run.isComplete)
-            /* TODO WHAT THE FUCK? WHY WONT THIS UPDATE */
+            /* TODO WHY WONT THIS UPDATE */
             run.isComplete = !run.isComplete;
             console.log(run.isComplete)
         }
